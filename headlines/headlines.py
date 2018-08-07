@@ -60,18 +60,23 @@ def get_news(publication):
 
 
 def get_weather(query):
-    query = urllib.parse.quote(query)
+	query = urllib.parse.quote(query)
+	weather = None
+	
+	"""
     url = WEATHER_URL.format(query)
     data = urllib.request.urlopen(url).read()
-    parsed = json.loads(data)
-    weather = None
+    parsed = json.loads(data)    
     if parsed.get('weather'):
         weather = {'description': parsed['weather'][0]['description'],
                    'temperature': parsed['main']['temp'],
                    'city': parsed['name'],
                    'country': parsed['sys']['country']
                    }
-    return weather
+    """
+	
+	return weather
+
 
 if __name__ == "__main__":
     app.run(debug=True)
