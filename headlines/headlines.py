@@ -43,7 +43,7 @@ def home():
     if not currency_to:
         currency_to = DEFAULTS['currency_to']
     #rate, currencies = get_rate(currency_from, currency_to)
-    return render_template("home.html", articles=articles) #, weather=weather) #, currency_from=currency_from, currency_to=currency_to, rate=rate,                         currencies=sorted(currencies))
+    return render_template("home.html", articles=articles, weather=weather) #, currency_from=currency_from, currency_to=currency_to, rate=rate,                         currencies=sorted(currencies))
 
 
 def get_rate(frm, to):
@@ -64,7 +64,8 @@ def get_weather(query):
 	weather = None
 	url = WEATHER_URL.format(query)
 	data = urllib.request.urlopen(url).read()
-	parsed = json.loads(data)   
+	weather=data
+	#parsed = json.loads(data)   
 
 	"""
     if parsed.get('weather'):
