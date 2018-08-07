@@ -4,7 +4,7 @@ from flask import render_template
 from flask import request
 import json
 import urllib
-import urllib2
+#import urllib2
 
 app = Flask(__name__)
 
@@ -49,7 +49,7 @@ def home():
 
 
 def get_rate(frm, to):
-    all_currency = urllib2.urlopen(CURRENCY_URL).read()
+    all_currency = urllib.request.urlopen(CURRENCY_URL).read()
     parsed = json.loads(all_currency).get('rates')
     frm_rate = parsed.get(frm.upper())
     to_rate = parsed.get(to.upper())
@@ -62,9 +62,9 @@ def get_news(publication):
 
 
 def get_weather(query):
-    query = urllib.quote(query)
+    query = urllib.parse.quote(query)
     url = WEATHER_URL.format(query)
-    data = urllib2.urlopen(url).read()
+    data = urllib.request.urlopen(url).read()
     parsed = json.loads(data)
     weather = None
     if parsed.get('weather'):
