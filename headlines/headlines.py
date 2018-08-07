@@ -20,9 +20,9 @@ DEFAULTS = {"publication":"bbc", "city":"Roanoke, US", "currency_from":"INR", "c
 WEATHER_URL =  "http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid=c2642ba2d65c8ad302e27ad09c5ac481"  # add &units=metric  for Celsius and &#8451 in template for 'C'
 CURRENCY_URL = "https://openexchangerates.org//api/latest.json?app_id=44d4d9c50dff46149037df707c4d494d"
 			 
-@app.route("/")
+#@app.route("/")
 #@app.route("/<publication>")
-#@app.route("/", methods=['GET','POST'])
+@app.route("/", methods=['GET','POST'])
 
 def home():
 	# get customized headlines, based on user input or default
@@ -51,8 +51,8 @@ def home():
 	return response
 	
 def get_value_with_fallback(key):
-	if request.args.get(key):
-		return request.args.get(key)
+	if request.form.get(key):
+		return request.form.get(key)
 	if request.cookies.get(key):
 		return request.cookies.get(key)
 	return DEFAULTS[key]

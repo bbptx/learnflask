@@ -44,7 +44,7 @@
 		</style>
 		
 	</head>
-	<form>
+	<form action="/" method="POST">
 		<input type="text" name="publication" placeholder="search" />
 		<input type="submit" value="Submit" />
 	</form>
@@ -59,7 +59,7 @@
 		
 		<div id="main">
 			<h2>Current weather</h2>
-			<form>
+			<form action="/" method="POST">
 				<input type="text" name="city" placeholder="weather search">
 				<input type="submit" value="submit">
 			</form>
@@ -67,7 +67,7 @@
 			<p>{{weather.description}} | {{weather.temperature}}&#8457;</p>
 			
 			<h2>Currency</h2>
-			<form>
+			<form action="/" method="POST">
 				from: <select name="currency_from">
 						{% for currency in currencies %}
 							<option value="{{currency}}"
