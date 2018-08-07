@@ -71,7 +71,7 @@ def get_news(query):
 
 def get_rates(frm, to):
 	all_currency = urllib.request.urlopen(CURRENCY_URL).read()
-	parsed = json.loads(all_currency).get("rates")
+	parsed = json.loads(all_currency.decode("utf-8")).get("rates")
 	frm_rate = parsed.get(frm.upper())
 	to_rate = parsed.get(to.upper())
 	return (to_rate/frm_rate, parsed.keys())
