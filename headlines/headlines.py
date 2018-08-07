@@ -34,7 +34,7 @@ def home():
     city = request.args.get('city')
     if not city:
         city = DEFAULTS['city']
-    weather = get_weather(city)
+    # weather = get_weather(city)
     # get customised currency based on user input or default
     currency_from = request.args.get("currency_from")
     if not currency_from:
@@ -43,7 +43,7 @@ def home():
     if not currency_to:
         currency_to = DEFAULTS['currency_to']
     #rate, currencies = get_rate(currency_from, currency_to)
-    return render_template("home.html", articles=articles, weather=weather) #, currency_from=currency_from, currency_to=currency_to, rate=rate,                         currencies=sorted(currencies))
+    return render_template("home.html", articles=articles) #, weather=weather) #, currency_from=currency_from, currency_to=currency_to, rate=rate,                         currencies=sorted(currencies))
 
 
 def get_rate(frm, to):
@@ -74,4 +74,4 @@ def get_weather(query):
     return weather
 
 if __name__ == "__main__":
-    app.run(port=5000, debug=True)
+    app.run(debug=True)
