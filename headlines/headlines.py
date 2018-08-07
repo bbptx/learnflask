@@ -42,10 +42,8 @@ def home():
     currency_to = request.args.get("currency_to")
     if not currency_to:
         currency_to = DEFAULTS['currency_to']
-    rate, currencies = get_rate(currency_from, currency_to)
-    return render_template("home.html", articles=articles, weather=weather,
-                           currency_from=currency_from, currency_to=currency_to, rate=rate,
-                           currencies=sorted(currencies))
+    #rate, currencies = get_rate(currency_from, currency_to)
+    return render_template("home.html", articles=articles, weather=weather) #, currency_from=currency_from, currency_to=currency_to, rate=rate,                         currencies=sorted(currencies))
 
 
 def get_rate(frm, to):
