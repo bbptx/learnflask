@@ -64,17 +64,15 @@ def get_weather(query):
 	weather = None
 	url = WEATHER_URL.format(query)
 	data = urllib.request.urlopen(url).read()
-	weather=data
-	#parsed = json.loads(data)   
-
-	"""
-    if parsed.get('weather'):
-        weather = {'description': parsed['weather'][0]['description'],
+	parsed = json.loads(data.decode("utf-8"))
+	
+	if parsed.get('weather'):
+		weather = {'description': parsed['weather'][0]['description'],
                    'temperature': parsed['main']['temp'],
                    'city': parsed['name'],
                    'country': parsed['sys']['country']
                    }
-    """
+    
 	
 	return weather
 
